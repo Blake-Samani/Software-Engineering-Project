@@ -14,7 +14,7 @@ public class MyServer {
             ss.bind(addres);
             
             Socket s = ss.accept();
-            FileInputStream fr = new FileInputStream("C:\\Users\\saman\\Documents\\School\\Software Engineering I\\Project\\xmlfile.xml");
+            FileInputStream fr = new FileInputStream("xmlfile.xml");
             byte b[]=fr.readAllBytes();
             fr.read(b, 0, b.length);
             OutputStream os = s.getOutputStream();
