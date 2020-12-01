@@ -18,21 +18,30 @@ public class Parser {
     private ArrayList<Integer> values = new ArrayList<>(); 
     private int counter;
     
-    public void parseEm(){
+    public void parseEm() {
                                                                             
         try {
+
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse("xmlfile.xml");
             NodeList patientList = doc.getElementsByTagName("Patient");
-            for(int i = 0; i < patientList.getLength();i++){
+
+            for (int i = 0; i < patientList.getLength();i++) {
+
                 Node p = patientList.item(i);
-                if(p.getNodeType()== Node.ELEMENT_NODE){
+
+                if (p.getNodeType() == Node.ELEMENT_NODE) {
+                    
                     Element patient = (Element) p;
                     // String id = patient.getAttribute("id");
                     NodeList attybutes = patient.getChildNodes();
-                    for(int j = 0; j<attybutes.getLength() - 2; j++){
+
+                    for (int j = 0; j<attybutes.getLength() - 2; j++) {
+
                         Node n = attybutes.item(j);
-                        if(n.getNodeType() == Node.ELEMENT_NODE){
+
+                        if (n.getNodeType() == Node.ELEMENT_NODE) {
+
                             Element name = (Element) n;
                             int k = Integer.parseInt(name.getTextContent());
                             values.add(k);
@@ -41,6 +50,7 @@ public class Parser {
                             counter++;
                             // System.out.println("Patient " + id + ":" + name.getTagName() + " = " 
                             // + name.getTextContent());
+                            
                         }
                     }
                     counter = 0;
