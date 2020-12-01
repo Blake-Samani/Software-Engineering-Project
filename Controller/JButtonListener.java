@@ -19,10 +19,8 @@ public class JButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         JButton b = (JButton) e.getSource();
-        
-        if (b == diagPanel.getConnectButton()) {
 
-        } else if (b == diagPanel.getDiagnoseButton()) {
+        if (b == diagPanel.getDiagnoseButton()) {
 
         } else if (b == diagPanel.getDeliverResultsButton()) {
             

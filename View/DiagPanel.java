@@ -17,21 +17,18 @@ public class DiagPanel {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 800;
     private JFrame window;    
-    private JButton connectButton;
     private JButton diagnoseButton;
     private JButton deliverResultsButton;
     private JButton quitButton;
-    private Dimension buttonDimension = new Dimension(200, 30);
+    private Dimension buttonDimension = new Dimension(200, 50);
     private JButtonListener jButtonListener;
 
     public DiagPanel(JFrame window) {
         this.window = window;
-        connectButton = new JButton("Connect");
         diagnoseButton = new JButton("Diagnose");
         deliverResultsButton = new JButton("Deliver Results");
         quitButton = new JButton("Quit");
         jButtonListener = new JButtonListener(this);
-        connectButton.addActionListener(jButtonListener);
         diagnoseButton.addActionListener(jButtonListener);
         deliverResultsButton.addActionListener(jButtonListener);
         quitButton.addActionListener(jButtonListener);
@@ -53,12 +50,10 @@ public class DiagPanel {
         southPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 8));
         southPanel.setBackground(background);
         JPanel spacer = new JPanel();
-        spacer.setPreferredSize(new Dimension(WIDTH, 50));
+        spacer.setPreferredSize(new Dimension(WIDTH, 20));
         spacer.setBackground(background);
         southPanel.add(BorderLayout.NORTH, spacer);
 
-        connectButton.setPreferredSize(buttonDimension);
-        southPanel.add(connectButton);
         diagnoseButton.setPreferredSize(buttonDimension);
         southPanel.add(diagnoseButton);
         deliverResultsButton.setPreferredSize(buttonDimension);
@@ -74,11 +69,6 @@ public class DiagPanel {
         cp.add(BorderLayout.WEST, westPanel);
         cp.add(BorderLayout.SOUTH, southPanel);
     }
-
-    public JButton getConnectButton() {
-        return connectButton;
-    }
-
     public JButton getDeliverResultsButton() {
         return deliverResultsButton;
     }
