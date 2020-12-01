@@ -6,7 +6,7 @@ import java.net.*;
 
 public class MyServer {
     
-    public static void main(String[] args){
+    public MyServer() {
         try{
             InetAddress addr = InetAddress.getByName("192.168.1.123");
             SocketAddress addres = new InetSocketAddress(addr, 7123);
