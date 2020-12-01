@@ -17,6 +17,10 @@ public class Parser {
     private DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     private ArrayList<Integer> values = new ArrayList<>(); 
     private int counter;
+
+    public Parser() {
+        
+    }
     
     public void parseEm() {
                                                                             
