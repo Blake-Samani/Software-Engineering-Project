@@ -4,7 +4,7 @@ import java.net.*;
 
 public class PatientUser {
 
-    public static void main(String[] args){
+    public PatientUser() {
         try{
             Socket s = new Socket("23.123.213.59", 7123);
             InputStream is = s.getInputStream();

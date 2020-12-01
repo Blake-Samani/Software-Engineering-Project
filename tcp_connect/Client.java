@@ -4,7 +4,7 @@ import java.net.*;
 
 public class Client {
 
-    public static void main(String[] args){
+    public Client() {
         try{
             byte []b = new byte[200002];
             Socket s = new Socket("192.168.1.123", 7123);

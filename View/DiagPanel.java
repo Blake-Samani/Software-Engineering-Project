@@ -1,68 +1,93 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-
+import Controller.JButtonListener;
 
 public class DiagPanel {
-    
-    private JFrame window;
 
-    private JTextField patientID = new JTextField(20); 
-    private JTextField clumpThickness = new JTextField(20); 
-    private JTextField cellSize = new JTextField(20); 
-    private JTextField cellShape = new JTextField(20); 
-    private JTextField margAdhesion = new JTextField(20); 
-    private JTextField singEpCellSize = new JTextField(20); 
-    private JTextField bareNuclei = new JTextField(20); 
-    private JTextField blandChromatin = new JTextField(20); 
-    private JTextField normalNucleoli = new JTextField(20); 
-    private JTextField mitosis = new JTextField(20); 
-     
-    
-    
+    private Color background = new Color(10, 40, 50);
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 800;
+    private JFrame window;    
+    private JButton connectButton;
+    private JButton diagnoseButton;
+    private JButton deliverResultsButton;
+    private JButton quitButton;
+    private Dimension buttonDimension = new Dimension(200, 30);
+    private JButtonListener jButtonListener;
 
-    public DiagPanel(JFrame window){
+    public DiagPanel(JFrame window) {
         this.window = window;
+        connectButton = new JButton("Connect");
+        diagnoseButton = new JButton("Diagnose");
+        deliverResultsButton = new JButton("Deliver Results");
+        quitButton = new JButton("Quit");
+        jButtonListener = new JButtonListener(this);
+        connectButton.addActionListener(jButtonListener);
+        diagnoseButton.addActionListener(jButtonListener);
+        deliverResultsButton.addActionListener(jButtonListener);
+        quitButton.addActionListener(jButtonListener);
     }
 
-    public void init(){
+    public void init() {
         Container cp = window.getContentPane();
 
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(400,800));
-        panel.setLayout(new GridLayout(10,1));
-        
+        JPanel northPanel = new JPanel();
+        northPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 10));
+        northPanel.setBackground(background);
+        JPanel eastPanel = new JPanel();
+        eastPanel.setPreferredSize(new Dimension(WIDTH / 3 + 200, HEIGHT / 2 + 100));
+        eastPanel.setBackground(background);
+        JPanel westPanel = new JPanel();
+        westPanel.setPreferredSize(new Dimension(WIDTH / 3 + 200, HEIGHT / 2 + 100));
+        westPanel.setBackground(background);
+        JPanel southPanel = new JPanel();
+        southPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 8));
+        southPanel.setBackground(background);
+        JPanel spacer = new JPanel();
+        spacer.setPreferredSize(new Dimension(WIDTH, 50));
+        spacer.setBackground(background);
+        southPanel.add(BorderLayout.NORTH, spacer);
 
-        JButton submitButton = new JButton("Submit");
-        
-        panel.add(patientID);
-        panel.add(clumpThickness);
-        panel.add(cellSize);
-        panel.add(cellShape);
-        panel.add(margAdhesion);
-        panel.add(singEpCellSize);
-        panel.add(bareNuclei);
-        panel.add(blandChromatin);
-        panel.add(normalNucleoli);
-        panel.add(mitosis);
-        panel.add(submitButton);
+        connectButton.setPreferredSize(buttonDimension);
+        southPanel.add(connectButton);
+        diagnoseButton.setPreferredSize(buttonDimension);
+        southPanel.add(diagnoseButton);
+        deliverResultsButton.setPreferredSize(buttonDimension);
+        southPanel.add(deliverResultsButton);
+        quitButton.setPreferredSize(buttonDimension);
+        southPanel.add(quitButton);
 
-      
-        cp.add(BorderLayout.CENTER, panel);
-        
-        
-        
-        
-        
+        westPanel.add(new DiagnoseCanvas(this));
+        eastPanel.add(new UploadCanvas(this));
+
+        cp.add(BorderLayout.NORTH, northPanel);
+        cp.add(BorderLayout.EAST, eastPanel);
+        cp.add(BorderLayout.WEST, westPanel);
+        cp.add(BorderLayout.SOUTH, southPanel);
+    }
+
+    public JButton getConnectButton() {
+        return connectButton;
+    }
+
+    public JButton getDeliverResultsButton() {
+        return deliverResultsButton;
+    }
+
+    public JButton getDiagnoseButton() {
+        return diagnoseButton;
+    }
+
+    public JButton getQuitButton() {
+        return quitButton;
     }
 }

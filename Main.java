@@ -9,14 +9,13 @@ public class Main{
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("Cancer Diagnosis Program");
-        window.setLocation(500, 200);
 
         var DiagPanel = new DiagPanel(window);
         DiagPanel.init();
 
         window.setResizable(false);
         window.pack();
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
-        
     }
 }
