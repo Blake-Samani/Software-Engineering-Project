@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Controller.JButtonListener;
+import tcp_connect.MyServer;
 
 public class DiagPanel {
 
@@ -17,29 +18,36 @@ public class DiagPanel {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 800;
     private JFrame window;    
+    private JButton connectButton;
     private JButton diagnoseButton;
     private JButton deliverResultsButton;
     private JButton quitButton;
     private Dimension buttonDimension = new Dimension(200, 50);
     private JButtonListener jButtonListener;
+    private DiagnoseCanvas leftCanvas;
+    private UploadCanvas rightCanvas;
+    private MyServer myServer;
 
     public DiagPanel(JFrame window) {
         this.window = window;
         diagnoseButton = new JButton("Diagnose");
+        connectButton = new JButton("Connect");
         deliverResultsButton = new JButton("Deliver Results");
         quitButton = new JButton("Quit");
         jButtonListener = new JButtonListener(this);
         diagnoseButton.addActionListener(jButtonListener);
         deliverResultsButton.addActionListener(jButtonListener);
         quitButton.addActionListener(jButtonListener);
+        leftCanvas = new DiagnoseCanvas(this);
+        rightCanvas = new UploadCanvas(this);
     }
 
     public void init() {
+
+        myServer = new MyServer();
+
         Container cp = window.getContentPane();
 
-        JPanel northPanel = new JPanel();
-        northPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 10));
-        northPanel.setBackground(background);
         JPanel eastPanel = new JPanel();
         eastPanel.setPreferredSize(new Dimension(WIDTH / 3 + 200, HEIGHT / 2 + 100));
         eastPanel.setBackground(background);
@@ -61,10 +69,9 @@ public class DiagPanel {
         quitButton.setPreferredSize(buttonDimension);
         southPanel.add(quitButton);
 
-        westPanel.add(new DiagnoseCanvas(this));
-        eastPanel.add(new UploadCanvas(this));
+        westPanel.add(leftCanvas);
+        eastPanel.add(rightCanvas);
 
-        cp.add(BorderLayout.NORTH, northPanel);
         cp.add(BorderLayout.EAST, eastPanel);
         cp.add(BorderLayout.WEST, westPanel);
         cp.add(BorderLayout.SOUTH, southPanel);
@@ -79,5 +86,13 @@ public class DiagPanel {
 
     public JButton getQuitButton() {
         return quitButton;
+    }
+
+    public DiagnoseCanvas getLeftCanvas() {
+        return leftCanvas;
+    }
+
+    public UploadCanvas getRightCanvas() {
+        return rightCanvas;
     }
 }

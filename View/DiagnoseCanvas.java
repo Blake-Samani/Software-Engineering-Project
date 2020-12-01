@@ -34,5 +34,9 @@ public class DiagnoseCanvas extends JPanel {
             g2.drawString(stringArrayList.get(i), x, y);
         }
     }
+
+    public ArrayList<String> getStringArrayList() {
+        return stringArrayList;
+    }
 }
 
