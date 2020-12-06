@@ -33,7 +33,7 @@ public class JButtonListener implements ActionListener {
             diagPanel.getLeftCanvas().repaint();
             
             socketThread = new Thread(()->{
-            	patientUser = new PatientUser(ips.get(count));});
+            	patientUser = new PatientUser(ips.get(count));
             
             
             if (patientUser.getS().isConnected()) {
@@ -43,7 +43,7 @@ public class JButtonListener implements ActionListener {
                 diagPanel.getLeftCanvas().getStringArrayList().add("Unable to establish connection.");
                 diagPanel.getLeftCanvas().repaint();
             }
-            
+            });
         } else if (b == diagPanel.getDeliverResultsButton()) {
             
         } else if (b == diagPanel.getQuitButton()) {
