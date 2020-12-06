@@ -43,7 +43,7 @@ public class JButtonListener implements ActionListener {
                 diagPanel.getLeftCanvas().getStringArrayList().add("Unable to establish connection.");
                 diagPanel.getLeftCanvas().repaint();
             }
-            
+            });
         } else if (b == diagPanel.getDeliverResultsButton()) {
             
         } else if (b == diagPanel.getQuitButton()) {
