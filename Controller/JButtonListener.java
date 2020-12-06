@@ -33,7 +33,7 @@ public class JButtonListener implements ActionListener {
             diagPanel.getLeftCanvas().repaint();
             
             socketThread = new Thread(()->{
-            	patientUser = new PatientUser(ips.get(count));
+            	patientUser = new PatientUser(ips.get(count));});
             
             
             if (patientUser.getS().isConnected()) {
