@@ -28,12 +28,15 @@ public class JButtonListener implements ActionListener {
         JButton b = (JButton) e.getSource();
 
         if (b == diagPanel.getDiagnoseButton()) {
+
             if (count == 2) count = 0;
+
             diagPanel.getLeftCanvas().getStringArrayList().add("Establishing Connection...");
             diagPanel.getLeftCanvas().repaint();
             
             socketThread = new Thread(()->{
-            	patientUser = new PatientUser(ips.get(count));
+                patientUser = new PatientUser(ips.get(count));
+            });
             
             
             if (patientUser.getS().isConnected()) {
