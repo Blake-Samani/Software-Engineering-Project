@@ -75,4 +75,46 @@ public class Parser {
     public ArrayList<Integer> getValues() {
         return values;
     }
+
+    static public Document toXML(String[] values){
+        Document doc;
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        
+        
+        try{
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        doc = builder.newDocument();
+        Element root = doc.createElementNS("patient dataset", "dataset");
+        doc.appendChild(root);
+        root.appendChild(patientNode(doc,values));
+        
+        
+            
+        
+        return doc;
+        
+        }catch(ParserConfigurationException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+    
+    private static Node patientNode(Document doc, String[] values) {
+        Element patient = doc.createElement("Patient");
+        patient.setAttribute("id", values[0]);
+        patient.setAttribute("clump_thickness", values[1]);
+        patient.setAttribute("uniformity_cell_size", values[2]);
+        patient.setAttribute("uniformity_cell_shape", values[3]);
+        patient.setAttribute("marginal_adhesion", values[4]);
+        patient.setAttribute("single_epithelial_cell_size", values[5]);
+        patient.setAttribute("bare_nuclei", values[6]);
+        patient.setAttribute("bland_chromatin", values[7]);
+        patient.setAttribute("normal_nucleoli", values[8]);
+        patient.setAttribute("mitoses", values[9]);
+        patient.setAttribute("class", values[10]);
+        
+        
+        return patient;
+    }
 }

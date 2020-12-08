@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Controller.JButtonListener;
+import Model.Parser;
 import tcp_connect.MyServer;
 
 public class DiagPanel {
@@ -43,9 +44,8 @@ public class DiagPanel {
 
     public DiagPanel(JFrame window) {
         this.window = window;
-        diagnoseButton = new JButton("Diagnose");
-        connectButton = new JButton("Connect");
-        deliverResultsButton = new JButton("Deliver Results");
+        diagnoseButton = new JButton("Establish Connection");
+        deliverResultsButton = new JButton("Diagnose User");
         quitButton = new JButton("Quit");
         jButtonListener = new JButtonListener(this);
         diagnoseButton.addActionListener(jButtonListener);
@@ -128,5 +128,49 @@ public class DiagPanel {
 
     public UploadCanvas getRightCanvas() {
         return rightCanvas;
+    }
+
+    public JTextArea getBareNucleiArea() {
+        return bareNucleiArea;
+    }
+
+    public JTextArea getBlandChromatinArea() {
+        return blandChromatinArea;
+    }
+
+    public JTextArea getClassArea() {
+        return classArea;
+    }
+
+    public JTextArea getClumpThicknessArea() {
+        return clumpThicknessArea;
+    }
+
+    public JTextArea getMarginalAdhesionArea() {
+        return marginalAdhesionArea;
+    }
+
+    public JTextArea getMitosesArea() {
+        return mitosesArea;
+    }
+
+    public JTextArea getNormalNucleoliArea() {
+        return normalNucleoliArea;
+    }
+
+    public JTextArea getPatientIDArea() {
+        return patientIDArea;
+    }
+
+    public JTextArea getSingleEpithelialCellSizeArea() {
+        return singleEpithelialCellSizeArea;
+    }
+
+    public JTextArea getUniformityCellShapeArea() {
+        return uniformityCellShapeArea;
+    }
+
+    public JTextArea getUniformityCellSizeArea() {
+        return uniformityCellSizeArea;
     }
 }
