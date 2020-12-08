@@ -17,7 +17,7 @@ import tcp_connect.MyServer;
 public class DiagPanel {
 
     private Color background = new Color(10, 40, 50);
-    public static final int WIDTH = 800;
+    public static final int WIDTH = 1000;
     public static final int HEIGHT = 1000;
     private JFrame window;    
     private JButton connectButton;
@@ -82,7 +82,7 @@ public class DiagPanel {
         southPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 8));
         southPanel.setBackground(background);
         JPanel textArePanel = new JPanel();
-        textArePanel.setLayout(new GridLayout(6, 2));
+        textArePanel.setLayout(new GridLayout(2, 6));
         textArePanel.add(patientIDArea);
         textArePanel.add(clumpThicknessArea);
         textArePanel.add(uniformityCellSizeArea);
@@ -95,7 +95,7 @@ public class DiagPanel {
         textArePanel.add(mitosesArea);
         textArePanel.add(classArea);
 
-        southPanel.add(BorderLayout.EAST, textArePanel);
+        southPanel.add(BorderLayout.NORTH, textArePanel);
         diagnoseButton.setPreferredSize(buttonDimension);
         southPanel.add(diagnoseButton);
         deliverResultsButton.setPreferredSize(buttonDimension);
