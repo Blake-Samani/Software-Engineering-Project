@@ -10,7 +10,7 @@ import Model.PatientUser;
 import View.DiagPanel;
 import tcp_connect.MyServer;
 
-public class JButtonListener implements ActionListener {
+public class JButtonListener implements ActionListener{
 
     private DiagPanel diagPanel;
     private ArrayList<String> ips = new ArrayList<>();
@@ -31,11 +31,10 @@ public class JButtonListener implements ActionListener {
             if (count == 2) count = 0;
             diagPanel.getLeftCanvas().getStringArrayList().add("Establishing Connection...");
             diagPanel.getLeftCanvas().repaint();
-            
+
             socketThread = new Thread(()->{
             	patientUser = new PatientUser(ips.get(count));
-            
-            
+                        
             if (patientUser.getS().isConnected()) {
                 diagPanel.getLeftCanvas().getStringArrayList().add("Connection Established to: ");
                 diagPanel.getLeftCanvas().repaint();
